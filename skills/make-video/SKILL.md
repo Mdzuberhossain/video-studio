@@ -21,7 +21,7 @@ A video is a project folder. Every change is a file edit plus a re-render. Never
 
 ## Setup (do this yourself; never ask the user to run commands)
 
-This plugin runs in Claude Code (the desktop app's Code tab or a terminal) and in Cowork. At the start of each session, check for `node` (22+), `ffmpeg`, `whisper` and the HyperFrames skills. Install anything missing yourself:
+This plugin runs in Claude Code (the desktop app's Code tab or a terminal) and in Cowork. At the start of each session, check for `node` (22+), `ffmpeg`, Whisper (`python -m whisper --help`) and the HyperFrames skills. Always run Whisper as `python -m whisper`, which works even when Windows has not added `whisper` to PATH yet. Install anything missing yourself:
 
 - HyperFrames skills, once for all projects: `npx skills add heygen-com/hyperframes -g`
 - Python 3.12 if `python` is missing: `winget install Python.Python.3.12` on Windows, `brew install python` on macOS

@@ -2,7 +2,7 @@
 
 ```bash
 pip install -U openai-whisper   # once
-whisper audio/vo.mp3 --model small --language en --word_timestamps True --output_format json --output_dir audio
+python -m whisper audio/vo.mp3 --model small --language en --word_timestamps True --output_format json --output_dir audio
 mv audio/vo.json audio/words.json
 ```
 
