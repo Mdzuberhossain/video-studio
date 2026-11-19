@@ -43,7 +43,7 @@ Run the stages in order. Skip optional ones the brief does not need, and say whi
 6. **Generated clips (optional).** For people shots, use Seedance: [references/people-shots.md](references/people-shots.md). Every other AI clip (b-roll, product moments, abstract shots) uses HeyGen Video via OpenRouter: [references/ai-clips.md](references/ai-clips.md).
 7. **3D shots (optional).** Only when a shot truly needs real 3D. Render in the background, `blender -b scene.blend -o //../footage/shot_####.png -a`, then place the frames or the encoded clip as video in a scene.
 8. **Scenes.** One HTML scene per script row. Time each scene and caption from `words.json`. Use AntV for charts, diagrams and infographics: [references/graphics.md](references/graphics.md). Use the brand's real fonts, colours and product screenshots from the repo when they exist.
-9. **Preview, then render.** Run `npx hyperframes preview`, look at the result, and fix what is wrong before the final `npx hyperframes render`. Use draft quality while you iterate.
+9. **Check, then render.** Check your work yourself: render a draft, look at frame snapshots, and fix what is wrong before the final `npx hyperframes render`. **Don't open HyperFrames Studio** (the browser editor from `npx hyperframes preview`) unless the user asks for it. If they do, tell them first that it's an optional editor, and run only one render at a time. When the final MP4 is ready, give its full path and open it in the default video player (`start "" "<file>"` on Windows, `open "<file>"` on macOS).
 10. **Finish and cut.** See [references/finishing.md](references/finishing.md) for the 4K upscale and per-platform versions.
 
 ## Updating an existing video
