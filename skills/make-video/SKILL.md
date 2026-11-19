@@ -1,6 +1,6 @@
 ---
 name: make-video
-description: Produce a finished video as code — product launch, feature drop, walkthrough, onboarding, "what's new" update, or weekly social content cut for LinkedIn, X and YouTube. Scenes are HTML rendered by HyperFrames; voice and music from ElevenLabs; Whisper word timings drive captions and cuts; AntV charts, diagrams and infographics; optional Seedance people shots, HeyGen Video (OpenRouter) b-roll clips, Blender 3D, Topaz 4K upscale. Use for "make a video", "launch video", "feature video", "product walkthrough video", "cut this for LinkedIn/X/YouTube", or "update the video".
+description: Produce a finished video as code — product launch, feature drop, walkthrough, onboarding, "what's new" update, or weekly social content cut for LinkedIn, X and YouTube. Scenes are HTML rendered by HyperFrames; voice and music from ElevenLabs; Whisper word timings drive captions and cuts; optional Seedance people shots, HeyGen Video (OpenRouter) b-roll clips, Blender 3D, Topaz 4K upscale. Use for "make a video", "launch video", "feature video", "product walkthrough video", "cut this for LinkedIn/X/YouTube", or "update the video".
 ---
 
 # Make a video
@@ -42,7 +42,7 @@ Run the stages in order. Skip optional ones the brief does not need, and say whi
 5. **Word timings.** See [references/timing.md](references/timing.md). Scene starts, caption words and hard cuts come from `audio/words.json`, never from estimates.
 6. **Generated clips (optional).** For people shots, use Seedance: [references/people-shots.md](references/people-shots.md). Every other AI clip (b-roll, product moments, abstract shots) uses HeyGen Video via OpenRouter: [references/ai-clips.md](references/ai-clips.md).
 7. **3D shots (optional).** Only when a shot truly needs real 3D. Render in the background, `blender -b scene.blend -o //../footage/shot_####.png -a`, then place the frames or the encoded clip as video in a scene.
-8. **Scenes.** One HTML scene per script row. Time each scene and caption from `words.json`. Use AntV for charts, diagrams and infographics: [references/graphics.md](references/graphics.md). Use the brand's real fonts, colours and product screenshots from the repo when they exist.
+8. **Scenes.** One HTML scene per script row. Time each scene and caption from `words.json`. For charts and diagrams, use HyperFrames' ready-made blocks (`npx hyperframes add`) or plain HTML/SVG. Use the brand's real fonts, colours and product screenshots from the repo when they exist.
 9. **Check, then render.** Check your work yourself: render a draft, look at frame snapshots, and fix what is wrong before the final `npx hyperframes render`. **Don't open HyperFrames Studio** (the browser editor from `npx hyperframes preview`) unless the user asks for it. If they do, tell them first that it's an optional editor, and run only one render at a time. When the final MP4 is ready, give its full path and open it in the default video player (`start "" "<file>"` on Windows, `open "<file>"` on macOS).
 10. **Finish and cut.** See [references/finishing.md](references/finishing.md) for the 4K upscale and per-platform versions.
 

@@ -1,6 +1,6 @@
 # AI clips: b-roll, product moments, abstract shots (HeyGen Video via OpenRouter)
 
-Use this for every generated clip **except people shots**, which go to Seedance ([people-shots.md](people-shots.md)). Before reaching for a generated clip, ask whether an HTML scene or an AntV graphic can show it, because those are free to re-render.
+Use this for every generated clip **except people shots**, which go to Seedance ([people-shots.md](people-shots.md)). Before reaching for a generated clip, ask whether an HTML scene can show it, because those are free to re-render.
 
 ## Cost check first
 

@@ -1,7 +1,7 @@
 {
   "name": "video-studio",
-  "version": "0.7.4",
-  "description": "Make launch films, feature drops, walkthroughs and social cuts as code: HTML scenes rendered by HyperFrames in the Claude desktop app, AntV graphics, Seedance and HeyGen Video clips, voice and music from ElevenLabs, captions timed with Whisper.",
+  "version": "0.8.0",
+  "description": "Make launch films, feature drops, walkthroughs and social cuts as code: HTML scenes rendered by HyperFrames in the Claude desktop app, Seedance and HeyGen Video clips, voice and music from ElevenLabs, captions timed with Whisper.",
   "author": {
     "name": "Mdzuberhossain",
     "url": "https://github.com/Mdzuberhossain"

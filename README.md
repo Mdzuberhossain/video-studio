@@ -2,7 +2,7 @@
 
 Make launch videos, feature updates, walkthroughs and LinkedIn / X / YouTube clips just by asking Claude. Claude writes the script, makes the voice-over, music, charts and AI clips, adds timed captions, and renders an MP4. To change something, ask, and Claude renders it again.
 
-Built on HyperFrames (scenes), ElevenLabs (voice and music), Whisper (caption timing), AntV (charts), and Seedance 2.5 and HeyGen Video through OpenRouter (AI clips).
+Built on HyperFrames (scenes), ElevenLabs (voice and music), Whisper (caption timing), and Seedance 2.5 and HeyGen Video through OpenRouter (AI clips).
 
 ---
 
