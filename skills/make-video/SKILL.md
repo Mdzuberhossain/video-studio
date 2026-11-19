@@ -21,15 +21,15 @@ A video is a project folder. Every change is a file edit plus a re-render. Never
 
 ## Setup (do this yourself; never ask the user to run commands)
 
-This plugin runs in the Claude desktop app's Code tab, on the user's own computer. At the start of each session, check for `node` (22+), `ffmpeg`, `whisper` and the HyperFrames skills. Install anything missing yourself:
+This plugin runs in Claude Code (the desktop app's Code tab or a terminal) and in Cowork. At the start of each session, check for `node` (22+), `ffmpeg`, `whisper` and the HyperFrames skills. Install anything missing yourself:
 
 - HyperFrames skills, once for all projects: `npx skills add heygen-com/hyperframes -g`
 - Python 3.12 if `python` is missing: `winget install Python.Python.3.12` on Windows, `brew install python` on macOS
 - Whisper: `python -m pip install -U openai-whisper`. The first transcription downloads the speech model, about 460 MB.
-- FFmpeg: `winget install Gyan.FFmpeg` on Windows, `brew install ffmpeg` on macOS
-- Node 22+: `winget install OpenJS.NodeJS.LTS` on Windows, `brew install node` on macOS
+- FFmpeg: `winget install Gyan.FFmpeg` on Windows, `brew install ffmpeg` on macOS, `sudo apt-get install -y ffmpeg` on Linux (Cowork)
+- Node 22+: `winget install OpenJS.NodeJS.LTS` on Windows, `brew install node` on macOS, and on Linux the NodeSource setup or `npx -y node@22`
 
-Tell the user in one line what you installed. If a new install isn't found on PATH, tell them to fully quit and reopen the desktop app.
+Tell the user in one line what you installed. In Cowork, if a download is blocked, tell the user to allow network access for Cowork in the desktop app's settings and try again. If a new install isn't found on PATH, tell them to fully quit and reopen the desktop app.
 
 ## Pipeline
 
@@ -52,22 +52,27 @@ Change the smallest file that fixes it: a VO line means regenerating that one `v
 
 ## Keys
 
-This skill uses two keys: `ELEVENLABS_API_KEY` for voice and music, and `OPENROUTER_API_KEY` for every generated clip (Seedance and HeyGen). They are kept in the user's key file, `~/.video-studio/.env`, which plugin updates never touch. Variables already set in the environment also work. Load the file in the same Bash command that makes each API call:
+This skill uses two keys: `ELEVENLABS_API_KEY` for voice and music, and `OPENROUTER_API_KEY` for every generated clip (Seedance and HeyGen). They live in a key file, which plugin updates never touch. Variables already set in the environment also work.
+
+- **Claude Code:** `~/.video-studio/.env`
+- **Cowork,** or anywhere Notepad can't be opened: `video-studio.env` in the folder the user picked. Cowork's sandbox is reset between sessions, so the key file must live in the user's folder.
+
+Load whichever exists in the same Bash command that makes each API call:
 
 ```bash
-f="$HOME/.video-studio/.env"; [ -f "$f" ] && { set -a; . "$f"; set +a; }; curl ...
+for f in "$HOME/.video-studio/.env" "./video-studio.env"; do [ -f "$f" ] && { set -a; . "$f"; set +a; }; done; curl ...
 ```
 
 **If a key is missing,** set up the file for the user. The user should never need a terminal:
 
-1. If the file doesn't exist, create it with exactly these lines:
+1. If the file doesn't exist, create it at the right location from the list above with exactly these lines:
    ```
    # Paste your keys after the = sign. No quotes, no spaces. Then save and close.
    OPENROUTER_API_KEY=
    ELEVENLABS_API_KEY=
    ```
-2. Open it for them: `notepad "$HOME/.video-studio/.env"` on Windows, `open -e ~/.video-studio/.env` on macOS.
-3. Tell them: "Paste your keys after the = signs, save, close Notepad, then tell me 'done'." Keys come from openrouter.ai/keys and elevenlabs.io → Profile → API Keys.
+2. Open it for them: `notepad "$HOME/.video-studio/.env"` on Windows, `open -e ~/.video-studio/.env` on macOS. In Cowork you can't open apps, so tell them: "Open your folder in File Explorer, right-click `video-studio.env` → Open with → Notepad."
+3. Tell them: "Paste your keys after the = signs, save, close Notepad, then tell me 'done'." In Cowork, also warn them not to share or upload that folder while the key file is in it. Keys come from openrouter.ai/keys and elevenlabs.io → Profile → API Keys.
 
 Rules:
 - Never print, `cat`, read or echo the key file or the keys. Only source it. To check a key is filled in without showing it, use `grep -c '^OPENROUTER_API_KEY=.' "$f"`.
