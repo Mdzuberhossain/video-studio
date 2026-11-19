@@ -31,6 +31,21 @@ This plugin runs in Claude Code (the desktop app's Code tab or a terminal) and i
 
 Tell the user in one line what you installed. In Cowork, if a download is blocked, tell the user to allow network access for Cowork in the desktop app's settings and try again. If a new install isn't found on PATH, tell them to fully quit and reopen the desktop app.
 
+## The stack (use exactly this)
+
+| Job | Tool |
+|---|---|
+| Every scene | HTML written by you |
+| HTML → video, frame by frame | HyperFrames |
+| People shots (they speak their own lines) | Seedance 2.5 via OpenRouter |
+| Simple AI clips (b-roll, objects, abstract moments) | HeyGen Video via OpenRouter |
+| Voices and music | ElevenLabs |
+| Word timings for captions and cuts | Whisper |
+| Upscale the final video to 4K | Topaz Video |
+| A shot that needs real 3D | Blender |
+
+Don't swap in other tools.
+
 ## Pipeline
 
 Run the stages in order. Skip optional ones the brief does not need, and say which you skipped.
@@ -40,8 +55,8 @@ Run the stages in order. Skip optional ones the brief does not need, and say whi
 3. **Scaffold.** `npx hyperframes init <video-name>` (needs Node 22+ and FFmpeg). Follow the HyperFrames skills for composition syntax, linting and preview. Do not guess the syntax.
 4. **Voice and music.** See [references/audio.md](references/audio.md).
 5. **Word timings.** See [references/timing.md](references/timing.md). Scene starts, caption words and hard cuts come from `audio/words.json`, never from estimates.
-6. **Generated clips (optional).** For people shots, use Seedance: [references/people-shots.md](references/people-shots.md). Every other AI clip (b-roll, product moments, abstract shots) uses HeyGen Video via OpenRouter: [references/ai-clips.md](references/ai-clips.md).
-7. **3D shots (optional).** Only when a shot truly needs real 3D. Render in the background, `blender -b scene.blend -o //../footage/shot_####.png -a`, then place the frames or the encoded clip as video in a scene.
+6. **Generated clips (optional).** For people shots, use Seedance: [references/people-shots.md](references/people-shots.md). Every simple AI clip (b-roll, objects, abstract moments) uses HeyGen Video via OpenRouter: [references/ai-clips.md](references/ai-clips.md).
+7. **3D shots (optional).** Only when a shot truly needs real 3D. If Blender is missing, install it (`winget install BlenderFoundation.Blender` on Windows, `brew install --cask blender` on macOS). Render in the background, `blender -b scene.blend -o //../footage/shot_####.png -a`, then place the frames or the encoded clip as video in a scene.
 8. **Scenes.** One HTML scene per script row. Time each scene and caption from `words.json`. For charts and diagrams, use HyperFrames' ready-made blocks (`npx hyperframes add`) or plain HTML/SVG. Use the brand's real fonts, colours and product screenshots from the repo when they exist.
 9. **Check, then render.** Check your work yourself: render a draft, look at frame snapshots, and fix what is wrong before the final `npx hyperframes render`. **Don't open HyperFrames Studio** (the browser editor from `npx hyperframes preview`) unless the user asks for it. If they do, tell them first that it's an optional editor, and run only one render at a time. When the final MP4 is ready, give its full path and open it in the default video player (`start "" "<file>"` on Windows, `open "<file>"` on macOS).
 10. **Finish and cut.** See [references/finishing.md](references/finishing.md) for the 4K upscale and per-platform versions.

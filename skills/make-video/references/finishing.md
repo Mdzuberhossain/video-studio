@@ -13,9 +13,14 @@ The scenes are HTML, so render each aspect ratio natively. Do not crop a 16:9 ma
 
 For each version, change the composition size, check that layouts reflow (text inside safe areas), shorten the cut where the platform needs it, and render to `out/<video>_<platform>.mp4`.
 
-## 4K upscale (Topaz, optional)
+## 4K upscale (Topaz)
 
-Only for the master or YouTube cut. Use Topaz Video (the desktop app's CLI or the Topaz API, whichever the user has). If it is not available, skip this step and say so. Rendering HyperFrames at 3840×2160 directly is often cleaner than upscaling anyway, so try that first.
+Every final video gets upscaled to 4K with Topaz Video. Render the final at 1920×1080 (or the platform size), then upscale ×2. Topaz Video is a paid desktop app and can't be installed for the user.
+
+- **If Topaz Video is installed,** use the FFmpeg that ships inside it (in the Topaz Video install folder) with its `tvai_up` filter at scale 2. Check the installed version's docs for the model name and the required model-folder environment variables before running. Write the result to `out/<video>_4k.mp4`.
+- **If it isn't installed,** say so in one line, render HyperFrames directly at 3840×2160 instead, and carry on. Never block the video on Topaz.
+
+Draft renders are never upscaled. Upscale only the version the user approves.
 
 ## Final check before handing over
 
