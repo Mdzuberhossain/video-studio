@@ -1,11 +1,14 @@
 {
   "name": "video-studio",
-  "owner": { "name": "Mdzuberhossain" },
+  "owner": {
+    "name": "Mdzuberhossain"
+  },
   "plugins": [
     {
       "name": "video-studio",
       "source": "./",
       "description": "Make videos as code: HyperFrames scenes, AntV graphics, ElevenLabs audio, Whisper timings, Seedance and HeyGen clips."
     }
-  ]
+  ],
+  "description": "Make launch, feature and social videos as code with Claude."
 }
