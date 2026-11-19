@@ -4,6 +4,14 @@ A Claude Code plugin that makes launch videos, feature drops, walkthroughs and L
 
 ## Install
 
+**Easiest: ask Claude.** Paste this into Claude Code or the **Code** tab of the Claude desktop app:
+
+> Install the Claude plugin from https://github.com/Mdzuberhossain/video-studio by running `claude plugin marketplace add Mdzuberhossain/video-studio` and then `claude plugin install video-studio@video-studio`. If the `claude` command isn't found, use `npx -y @anthropic-ai/claude-code` in its place. Then tell me to restart the app.
+
+Approve the commands when Claude asks, then fully quit and reopen the app.
+
+**Or by hand:**
+
 **Claude desktop app:** click **+** next to the prompt box → **Plugins** → **Add marketplace** → enter `Mdzuberhossain/video-studio` → **Add plugin** on video-studio. Restart the app.
 
 **Claude Code in a terminal:**
